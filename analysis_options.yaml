@@ -1,6 +1,11 @@
 analyzer:
   exclude:
     - test/**.dart
+    - lib/data/cache/**/*.freezed.dart
+    - lib/data/entity/**/*.freezed.dart
+    - lib/data/entity/**/*.g.dart
+    - lib/domain/model/**/*.freezed.dart
+    - lib/presentation/viewmodel/**/*.freezed.dart
   errors:
     missing_required_param: warning
     missing_return: warning
