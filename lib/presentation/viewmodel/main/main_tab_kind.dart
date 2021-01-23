@@ -1,0 +1,4 @@
+enum MainTabKind {
+  repositoryList,
+  profile,
+}
