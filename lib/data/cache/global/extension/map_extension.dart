@@ -1,9 +1,16 @@
+import 'package:clean_architecture_sample/data/cache/global/datastate/data_state.dart';
 import 'package:clean_architecture_sample/data/cache/global/datastate/paging_data_state.dart';
 import 'package:rxdart/rxdart.dart';
 
 extension MapBehaviorSubjectListDataStateExtension<K> on Map<K, BehaviorSubject<PagingDataState>> {
   BehaviorSubject<PagingDataState> getOrCreate(final K key) {
     return getOrCreateSeeded(key, () => const PagingDataState.normal(false, 1));
+  }
+}
+
+extension MapBehaviorSubjectDataStateExtension<K> on Map<K, BehaviorSubject<DataState>> {
+  BehaviorSubject<DataState> getOrCreate(final K key) {
+    return getOrCreateSeeded(key, () => const DataState.normal());
   }
 }
 
