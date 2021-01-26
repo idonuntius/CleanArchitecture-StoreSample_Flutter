@@ -1,3 +1,7 @@
+import 'package:clean_architecture_sample/domain/usecase/me/request_me_usecase.dart';
+import 'package:clean_architecture_sample/domain/usecase/me/request_me_usecase_impl.dart';
+import 'package:clean_architecture_sample/domain/usecase/me/stream_me_usecase.dart';
+import 'package:clean_architecture_sample/domain/usecase/me/stream_me_usecase_impl.dart';
 import 'package:clean_architecture_sample/domain/usecase/repository/request_additional_repositories_usecase.dart';
 import 'package:clean_architecture_sample/domain/usecase/repository/request_additional_repositories_usecase_impl.dart';
 import 'package:clean_architecture_sample/domain/usecase/repository/request_repositories_usecase.dart';
@@ -18,8 +22,18 @@ class DomainModule extends Module {
           get(),
         ),
       ),
+      single<RequestMeUseCase>(
+        () => RequestMeUseCaseImpl(
+          get(),
+        ),
+      ),
       single<RequestRepositoriesUseCase>(
         () => RequestRepositoriesUseCaseImpl(
+          get(),
+        ),
+      ),
+      single<StreamMeUseCase>(
+        () => StreamMeUseCaseImpl(
           get(),
         ),
       ),
