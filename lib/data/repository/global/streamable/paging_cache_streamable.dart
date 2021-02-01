@@ -15,7 +15,7 @@ abstract class PagingCacheStreamable<ENTITY> {
 
   Future<void> saveEntities(final List<ENTITY> entities, final bool additionalRequest);
 
-  Future<List<ENTITY>> fetchOrigin(final int nextPage, final bool additionalRequest);
+  Future<List<ENTITY>> fetch(final int nextPage, final bool additionalRequest);
 
   Stream<State<List<ENTITY>>> stream() {
     return loadStateStream().doOnListen(() {
@@ -94,7 +94,7 @@ abstract class PagingCacheStreamable<ENTITY> {
     try {
       if (clearCache) await saveEntities(null, additionalRequest);
       await saveState(const PagingDataState.loading());
-      final newEntities = await fetchOrigin(nextPage, additionalRequest);
+      final newEntities = await fetch(nextPage, additionalRequest);
       final mergedEntities = additionalRequest ? entities + newEntities : newEntities;
       await saveEntities(mergedEntities, additionalRequest);
       // HACK: ラストページの判断は、もっと厳密に実装する必要がありそう。

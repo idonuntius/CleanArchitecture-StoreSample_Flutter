@@ -14,7 +14,7 @@ abstract class CacheStreamable<ENTITY> {
 
   Future<void> saveEntity(final ENTITY entity);
 
-  Future<ENTITY> fetchOrigin();
+  Future<ENTITY> fetch();
 
   Stream<State<ENTITY>> stream() {
     return _loadStateStream().doOnListen(() {
@@ -72,7 +72,7 @@ abstract class CacheStreamable<ENTITY> {
     try {
       if (clearCache) await saveEntity(null);
       await _saveState(const DataState.loading());
-      final entity = await fetchOrigin();
+      final entity = await fetch();
       await saveEntity(entity);
       await _saveState(const DataState.normal());
     } catch (exception) {

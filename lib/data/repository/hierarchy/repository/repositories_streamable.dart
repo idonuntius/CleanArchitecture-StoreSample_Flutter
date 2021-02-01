@@ -30,7 +30,7 @@ class RepositoriesStreamable extends PagingCacheStreamable<Repository> {
   }
 
   @override
-  Future<List<Repository>> fetchOrigin(final int nextPage, final bool additionalRequest) async {
+  Future<List<Repository>> fetch(final int nextPage, final bool additionalRequest) async {
     try {
       final page = additionalRequest ? nextPage : 1;
       final entities = await _repositoriesApi.getRepositories(page);

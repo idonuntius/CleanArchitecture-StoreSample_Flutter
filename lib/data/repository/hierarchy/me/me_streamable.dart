@@ -23,7 +23,7 @@ class MeStreamable extends CacheStreamable<Me> {
   }
 
   @override
-  Future<Me> fetchOrigin() async {
+  Future<Me> fetch() async {
     try {
       final entity = await _meApi.getMe();
       return _meMapper(entity);
